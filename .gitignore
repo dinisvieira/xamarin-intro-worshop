@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+/Code/WindowsDev/XamarinMemeGenerator/packages
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.Droid/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.Droid/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.iOS/obj/iPhone/Debug
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/bin
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/obj
+*.user
+/Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.Droid/Resources/Resource.designer.cs
