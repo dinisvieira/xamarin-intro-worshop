@@ -16,29 +16,27 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 ## Requirements ##
 
-* Windows PC
+* Windows PC (Windows 8.1)
 
-	* Windows 8.1
+	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/windows/ "Xamarin.Android") (if you are going to use Xamarin Studio you can also install it in this step, and skip step 3)
 
-	* [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/windows/ "Xamarin.Android")
-
-	* [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player"), [Genymotion](https://www.genymotion.com/#%21/ "Genymotion") or the [default Android Emulator with some speed "boost"](http://developer.xamarin.com/guides/android/getting_started/installation/accelerating_android_emulators/)
+	* 2 - [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion") or the [default Android Emulator with some speed "boost"](http://developer.xamarin.com/guides/android/getting_started/installation/accelerating_android_emulators/)
 		
 
-	* [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "Visual Studio Community 2013") or [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
+	* 3 - [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "Visual Studio Community 2013") or [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
 
-	* [Windows Phone 8.1 SDK](https://dev.windows.com/en-us/develop/downloads "Windows Phone 8.1 SDK")
+	* 4 - [Windows Phone 8.1 SDK](https://dev.windows.com/en-us/develop/downloads "Windows Phone 8.1 SDK")
 	
 * Mac
 
-	* [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/mac/ "Xamarin.Android")
+	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/mac/ "Xamarin.Android") (you can also install Xamarin iOS and Xamarin Studio in this step, so you can skip 3 and 4)
 
-	* [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion")
+	* 2 - [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion")
 		
 
-	* [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
+	* 3 - [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
 
-	* [Xamarin iOS](http://developer.xamarin.com/guides/ios/getting_started/installation/mac/)
+	* 4 - [Xamarin iOS](http://developer.xamarin.com/guides/ios/getting_started/installation/mac/)
 
 
 * [Optional] Sign up for a [Xamarin Student License](https://xamarin.com/student).
@@ -48,7 +46,7 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 ### [Track 1 - Development with Windows](Guide-Windows.md) ###
 You will develop a Windows Phone and Android application.  
-It's possible to also create a iOS Application but that would require a Mac Build Host and it's not covered in this Guide.
+It's also possible to create an iOS Application but that would require a Mac Build Host and it's not covered in this guide.
 
 
 ### [Track 2 - Development with Mac](Guide-Mac.md) ###
