@@ -86,3 +86,25 @@ So, we want to build an application capable of building [Meme's](http://gizmodo.
 		
 			}
 		}
+
+> This class contains two methods, on returns a list of string with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
+
+> You might notice there's and Mashape API Key on these methods.
+> This key will be disabled in May 4, 2015.  
+> Get your own key for free in [here](https://www.mashape.com/ronreiter/meme-generator).
+
+* 4) Add missing "usings/imports".
+ 
+		using System.Collections.ObjectModel;
+		using System.Net.Http;
+		using System.Text.RegularExpressions;
+		using System.Threading.Tasks;
+* 5) You might notice "JsonConvert" is still "red", that's because we need to add a "plugin/Nuget" to this Shared project that handles Json.
+	* a) Right Click the XamarinMemeGenerator project => Manage Nuget Packages
+	* b) A window will pop up, write "json" in the top-right corner box.
+	* c) Install the Json.NET that shows on the list.  
+	![](images/AddJSONMain.png)
+
+* 6) You can now import the required dependecy for the JsonConvert
+> One of the great things about using Xamarin is that you can still use all the plugins out there because Nuget is fully supported on these Portable Class Libraries.
+So for example this Json.NET plugin will be used by both the Android and Windows Phone platform.
