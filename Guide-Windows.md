@@ -202,3 +202,107 @@ In the image below are the two files we will work with:
 
 ### Create Android Application
 
+* 1) Let's do some work on our Android app.
+	* Start by setting it as the Startup Platform (Right-click XamarinMemeGenerator.Droid and select "Set as startup project")
+* 2) Sanity check. The app should launch "as is", although it won't do anything besides display a page with a hello button.
+	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
+	![](images/ProjectDebugAndroid.png)
+> NOTE: The emulator to lauch the app depends a lot on the Emulator application you are using. Ask for help if needed.
+> 
+> Hopefully the application did run, now let's move to actually coding some stuff :)  
+> 
+> In the image below are the two files we will work with:
+
+* Main.axml which is a AXML (markup) file for the "view"
+* MainActivity.cs which is the "code-behind" for the "view" and it's written in c#
+
+![](images/AndroidProjectFiles.png)
+
+* 3) Like we did with the Windows Phone app let's create the View for the Android app.
+	* Go to the Main.axml file, you'll notice that you can both edit it Visually (Design) or just with code (Source), just like in the original Android editor.
+	* To make things quicker, choose "Source" and replace all the contents with the code below.
+
+			<?xml version="1.0" encoding="utf-8"?>
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent">
+		    <Spinner
+		        android:layout_width="match_parent"
+		        android:layout_height="52.9dp"
+		        android:id="@+id/spinnerMemes"
+		        android:spinnerMode="dialog" />
+		    <EditText
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Top Text"
+		        android:id="@+id/editTextTop" />
+		    <EditText
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Bottom Text"
+		        android:id="@+id/editTextBottom" />
+		    <Button
+		        android:id="@+id/myButtonGenerate"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="Generate My Meme" />
+		    <ImageView
+		        android:src="@android:drawable/ic_menu_gallery"
+		        android:layout_width="match_parent"
+		        android:layout_height="350.1dp"
+		        android:id="@+id/imageViewMeme" />
+			</LinearLayout> 
+
+> Just like the Windows Phone version this code adds:  
+> 
+> * A Spinner to display all the meme's available
+> * Two Textbox's where we add the top and bottom text for our meme.
+> * A button to call the API and get our Meme
+> * An image placeholder for our meme image
+
+* 4) Now go to the "MainActivity.cs"
+
+* 5) Inside the "OnCreate" method **replace the lines below**:
+
+			// Get our button from the layout resource,
+			// and attach an event to it
+			Button button = FindViewById<Button> (Resource.Id.myButton);
+			
+			button.Click += delegate {
+				button.Text = string.Format ("{0} clicks!", count++);
+			};
+**With this**:
+
+            //Reference to all the View Elements
+            Button button = FindViewById<Button>(Resource.Id.myButtonGenerate);
+            Spinner memesSpinner = FindViewById<Spinner>(Resource.Id.spinnerMemes);
+            EditText editTextTop = FindViewById<EditText>(Resource.Id.editTextTop);
+            EditText editTextBottom = FindViewById<EditText>(Resource.Id.editTextBottom);
+            ImageView imageViewMeme = FindViewById<ImageView>(Resource.Id.imageViewMeme);
+
+            //Calls the Shared Portable Class Library to get a list with all available meme's.
+            ObservableCollection<string> memes = await XamarinMemeGenerator.WantSomeMemesNowClass.ShowMeThoseMemes();
+
+            //Set the list of memes to our Spinner and enable it
+            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, memes);
+            memesSpinner.Adapter = adapter;
+
+            button.Click += async delegate
+            {
+                //Calls the Shared Portable Class Library with the values of the Spinner and TextBox's in this View.
+                //The returned value is the image in a byte array format 
+                byte[] imageBytes = await XamarinMemeGenerator.WantSomeMemesNowClass.GenerateMyMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
+
+                //Create Image
+                Bitmap bmp = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+
+                //Set image to the Image Placeholder we have on our View
+                imageViewMeme.SetImageBitmap(bmp);
+            };
+
+> Add any missing references. And "fix" the "await".
+
+> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
+
+* 6) This should do it! Try and run it just like you did on step 2)
