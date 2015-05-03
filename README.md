@@ -46,10 +46,10 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 ## Workshop Guide ##
 
-### Track 1 - Development with Windows ###
+### [Track 1 - Development with Windows](Guide-Windows.md) ###
 You will develop a Windows Phone and Android application.  
 It's possible to also create a iOS Application but that would require a Mac Build Host and it's not covered in this Guide.
 
 
-### Track 2 - Development with Mac ###
+### [Track 2 - Development with Mac](Guide-Mac.md) ###
 You will develop an iOS and Android application.  
