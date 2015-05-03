@@ -306,3 +306,12 @@ In the image below are the two files we will work with:
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
 * 6) This should do it! Try and run it just like you did on step 2)
+
+
+### What about now? (Suggestions for your free time)
+
+* 1) Get a Mac a use it as a Build Host to build the missing platform (iOS): [link](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/introduction_to_xamarin_ios_for_visual_studio/)
+* 2) Add more functionality like sharing and saving the generated image
+* 3) Redo the whole application using [Xamarin.Forms](http://developer.xamarin.com/guides/cross-platform/xamarin-forms/) (Allows to also share UI code)
+* 4) Share even more code by using MVVM pattern. [why?](http://stackoverflow.com/a/18711842/201096)
+* 5) Use a proper API. The API used in this Workshop is not that good (it's simple though), but you could try using a more complete/professional API.
