@@ -39,6 +39,10 @@ You Solution Explorer should look like this now:
 
 So, we want to build an application capable of building [Meme's](http://gizmodo.com/what-exactly-is-a-meme-512058258), for that we'll need to use an API that gives us a list of meme's and then allows us to send it the selected meme, some captions and return a meme image.
 
+This is the screenshot of the application we want to build (Windows Phone version).
+
+![](images/WP_final.jpg)
+
 ### Create shared code that accesses the Meme Generation API
 
 * 1) In the XamarinMemeGenerator Project delete the "MyClass.cs"
@@ -108,3 +112,93 @@ So, we want to build an application capable of building [Meme's](http://gizmodo.
 * 6) You can now import the required dependecy for the JsonConvert
 > One of the great things about using Xamarin is that you can still use all the plugins out there because Nuget is fully supported on these Portable Class Libraries.
 So for example this Json.NET plugin will be used by both the Android and Windows Phone platform.
+
+### Create Windows Phone Application
+
+* 1) Let's do some work on our Windows Phone app.
+	* Start by setting it as the Startup Platform (Right-click XamarinMemeGenerator.WinPhone and select "Set as startup project")
+* 2) Sanity check. The app should launch "as is", although it won't do anything besides display an blank page.
+	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
+	![](images/ProjectDebugConfig.png)
+
+Hopefully the application did run, now let's move to actually coding some stuff :)  
+In the image below are the two files we will work with:
+
+* MainPage.xaml which is a XAML (markup) file for the "view"
+* MainPage.xaml.cs which is the "code-behind" for the "view" and it's written in c#
+
+![](images/WinPhoProjectFiles.png)
+
+* 3) Open the MainPage.xaml and between the <Grid> and </Grid> tags add the code below.
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <ComboBox x:Name="MemesListView" 
+                      VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Stretch" IsEnabled="False">
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <TextBox x:Name="TopTextBox" PlaceholderText="Top Text"></TextBox>
+            <TextBox x:Name="BottomTextBox" PlaceholderText="Bottom Text"></TextBox>
+            <Button x:Name="GenerateMyMeme" Tapped="GenerateMyMemeBtn_OnTapped">Generate My Meme</Button>
+        </StackPanel>
+        <Image x:Name="Image" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Image>
+
+> This code adds:  
+> 
+> * A ComboBox to display all the meme's available
+> * Two Textbox's where we add the top and bottom text for our meme.
+> * A button to call the API and get our Meme
+> * An image placeholder for our meme image
+
+* 4) You might notice an error in "GenerateMyMemeBtn_OnTapped", right-click it and choose "Go to definition". (you will be "switched" to the code-behind (MainPage.xaml.cs)
+* 5) Inside the newly generated method for the Button event (GenerateMyMemeBtn_OnTapped) add the following.
+
+        if (MemesListView.SelectedValue == null) { return; } //make sure we have a selected value
+
+        //Calls the Shared Portable Class Library with the values of the ComboBox and TextBox's in this View.
+        //The returned value is the image in a byte array format 
+        byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(MemesListView.SelectedValue.ToString(), TopTextBox.Text, BottomTextBox.Text);
+
+        //Create Image
+        var bitmapImage = new BitmapImage();
+        var stream = new InMemoryRandomAccessStream();
+        await stream.WriteAsync(imageBytes.AsBuffer());
+        stream.Seek(0);
+        bitmapImage.SetSource(stream);
+            
+        //Set image to the Image Placeholder we have on our View
+        Image.Source = bitmapImage;
+
+> Add any missing references. You might get an error on the "await's". Do you know what that is? Ask me! (Anyway, if you add an "async" to the method signature it will stop complaining.   
+> << private **async** void GenerateMyMemeBtn_OnTapped(object sender, TappedRoutedEventArgs e) >>
+
+> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
+
+* 6) We already did lot's of stuff, but we are still missing the code to get the available meme's and display them on the ComboBox.
+	* To do that add the following code in MainPage.xaml.cs "OnNavigatedTo" method:
+
+            //Calls the Shared Portable Class Library to get a list with all available meme's.
+            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
+
+            //Set the list of memes to our ComboBox and enable it
+            MemesListView.ItemsSource = memes;
+            MemesListView.IsEnabled = true;
+
+> Add any missing references. You will probably get that "await" error again. Do you remember how to fix it?
+
+> This method is the one responsible to get all the available memes in the API. It also uses our shared Portable Class Library as you can see.
+
+* 7) This should do it! Try and run it just like you did on step 2)
+
+### Create Android Application
+
