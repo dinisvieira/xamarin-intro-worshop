@@ -307,6 +307,8 @@ In the image below are the two files we will work with:
 
 * 6) This should do it! Try and run it just like you did on step 2)
 
+![](images/Android_final.png)
+
 
 ### What about now? (Suggestions for your free time)
 

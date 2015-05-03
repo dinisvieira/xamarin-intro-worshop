@@ -13,3 +13,18 @@
 /Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/obj
 *.user
 /Code/WindowsDev/XamarinMemeGenerator/XamarinMemeGenerator/XamarinMemeGenerator.Droid/Resources/Resource.designer.cs
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/packages
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator.Droid/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator.Droid/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator (with iOS)/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/obj
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/packages
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator.Droid/bin/Debug
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator.Droid/obj/Debug
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator.Droid/Resources/Resource.designer.cs
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/bin
+/Code/WindowsDev/XamarinMemeGenerator (Workshop)/XamarinMemeGenerator/XamarinMemeGenerator.WinPhone/obj
