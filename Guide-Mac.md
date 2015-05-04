@@ -130,75 +130,93 @@ In the image below are the two files we will work with:
 ![](images/iOSProjectFiles.png)
 
 * 3) Open the Main.storyboard.
+	* You should see something similar to the image below. (call me if you don't)
+	* Read the tips in the image below
+![](images/iOSStoryboard.png)
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <ComboBox x:Name="MemesListView" 
-                      VerticalAlignment="Stretch" 
-                      HorizontalAlignment="Stretch" IsEnabled="False">
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBox x:Name="TopTextBox" PlaceholderText="Top Text"></TextBox>
-            <TextBox x:Name="BottomTextBox" PlaceholderText="Bottom Text"></TextBox>
-            <Button x:Name="GenerateMyMeme" Tapped="GenerateMyMemeBtn_OnTapped">Generate My Meme</Button>
-        </StackPanel>
-        <Image x:Name="Image" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Image>
+* 4) Create the View, drag the required elements to build a view like the image below.
+	* Name the elements as explained in the image (the place to name them is in the Properties when you select an element)
+	* You might need help, so don't hesitate in calling me!
 
-> This code adds:  
-> 
-> * A ComboBox to display all the meme's available
-> * Two Textbox's where we add the top and bottom text for our meme.
-> * A button to call the API and get our Meme
-> * An image placeholder for our meme image
+![](images/iOSStoryboard-finished.png)
 
-* 4) You might notice an error in "GenerateMyMemeBtn_OnTapped", right-click it and choose "Go to definition". (you will be "switched" to the code-behind (MainPage.xaml.cs)
-* 5) Inside the newly generated method for the Button event (GenerateMyMemeBtn_OnTapped) add the following.
+* 5) Now go to the ViewController.cs, you should have a "GetMemeButton_TouchUpInside" method in there, inside add this code:
 
-        if (MemesListView.SelectedValue == null) { return; } //make sure we have a selected value
+			//Get current selected meme from the ViewPicker
+			var rowSel = MemePicker.SelectedRowInComponent(new nint(0));
+			var memeString = (MemePicker.Model as MemesPickerViewModel).GetTitle(rowSel);
 
-        //Calls the Shared Portable Class Library with the values of the ComboBox and TextBox's in this View.
-        //The returned value is the image in a byte array format 
-        byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(MemesListView.SelectedValue.ToString(), TopTextBox.Text, BottomTextBox.Text);
+        	//Calls the Shared Portable Class Library with the values of the PickerView and TextFields’s in this View.
+        	//The returned value is the image in a byte array format 
+			byte[] imageByteArr = await XamarinMemeGenerator.WantSomeMemesNowClass.GenerateMyMeme(memeString, TopTextField.Text, BottomTextField.Text);
+			//Create image
+			var img = new UIImage(NSData.FromArray(imageByteArr));
 
-        //Create Image
-        var bitmapImage = new BitmapImage();
-        var stream = new InMemoryRandomAccessStream();
-        await stream.WriteAsync(imageBytes.AsBuffer());
-        stream.Seek(0);
-        bitmapImage.SetSource(stream);
-            
-        //Set image to the Image Placeholder we have on our View
-        Image.Source = bitmapImage;
+ 			//Set image to the Image Placeholder we have on our View
+			MemeImageView.Image = img;
 
 > Add any missing references. You might get an error on the "await's". Do you know what that is? Ask me! (Anyway, if you add an "async" to the method signature it will stop complaining.   
-> << private **async** void GenerateMyMemeBtn_OnTapped(object sender, TappedRoutedEventArgs e) >>
+> << **async** partial void GetMemeButton_TouchUpInside (UIButton sender) >>
 
-> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
+> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the TextField's and PickerView and the transforms the returned byte array in an image to display.
 
-* 6) We already did lot's of stuff, but we are still missing the code to get the available meme's and display them on the ComboBox.
-	* To do that add the following code in MainPage.xaml.cs "OnNavigatedTo" method:
+* 6) You might notice we are missing a MemePickerViewModel, this is needed to support the native iOS PickerView. Just add the code below between the two last curly braces "}"
+	* Again fix/resolve any dependencies.
 
-            //Calls the Shared Portable Class Library to get a list with all available meme's.
-            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
+			public class MemesPickerViewModel : UIPickerViewModel
+			{
+		
+				private string[] _memesArr;
+		
+				public MemesPickerViewModel(ObservableCollection<string> memes){
+					_memesArr = new string[memes.Count];
+					memes.CopyTo (_memesArr, 0);
+				}
+		
+				public string GetTitle (nint row)
+				{
+					return _memesArr[row];
+				}
+		
+				public override nint GetComponentCount (UIPickerView pickerView)
+				{
+					return 1;
+				}
+						
+				public override string GetTitle (UIPickerView pickerView, nint row, nint component)
+				{
+					return _memesArr[row];
+				}
+		
+				public override nint GetRowsInComponent (UIPickerView pickerView, nint component)
+				{
+					return _memesArr.Length;
+				}
+			}
 
-            //Set the list of memes to our ComboBox and enable it
-            MemesListView.ItemsSource = memes;
-            MemesListView.IsEnabled = true;
+* 7) We already did lot's of stuff, but we are still missing the code to get the available meme's and display them on the PickerView.
+	* To do that **replace** the following code in ViewController.cs "ViewDidLoad" method:
+
+			// Perform any additional setup after loading the view, typically from a nib.
+			Button.AccessibilityIdentifier = "myButton";
+			Button.TouchUpInside += delegate {
+				var title = string.Format ("{0} clicks!", count++);
+				Button.SetTitle (title, UIControlState.Normal);
+			};
+
+	* **With this**
+
+			//Calls the Shared Portable Class Library to get a list with all available meme's.
+			ObservableCollection<string> memes = await XamarinMemeGenerator.WantSomeMemesNowClass.ShowMeThoseMemes ();
+
+			//Set the list of memes we got to our PickerView (using the pickerViewModel we created)
+			MemePicker.Model = new MemesPickerViewModel (memes);
 
 > Add any missing references. You will probably get that "await" error again. Do you remember how to fix it?
 
 > This method is the one responsible to get all the available memes in the API. It also uses our shared Portable Class Library as you can see.
 
-* 7) This should do it! Try and run it just like you did on step 2)
+* 8) This should do it! Try and run it just like you did on step 2)
 
 ### Create Android Application
 
