@@ -108,6 +108,8 @@ This is the screenshot of the application we want to build (Android version).
 	![](images/AddJSONMainMac2.png)
 
 * 6) You can now import the required dependencies for the JsonConvert and HttpClient.
+> You must repeat this process while selecting the iOS project
+
 > One of the great things about using Xamarin is that you can still use all the plugins out there because Nuget is fully supported on these Portable Class Libraries.
 So for example this Json.NET plugin will be used by both the Android and iOS platform.
 
@@ -218,13 +220,15 @@ In the image below are the two files we will work with:
 
 * 8) This should do it! Try and run it just like you did on step 2)
 
+![](images/iOS_final.png)
+
 ### Create Android Application
 
 * 1) Let's do some work on our Android app.
 	* Start by setting it as the Startup Platform (Right-click XamarinMemeGenerator.Droid and select "Set as startup project")
 * 2) Sanity check. The app should launch "as is", although it won't do anything besides display a page with a hello button.
 	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
-	![](images/ProjectDebugAndroid.png)
+	![](images/ProjectDebugConfigMacAndroid.png)
 > NOTE: The emulator to lauch the app depends a lot on the Emulator application you are using. Ask for help if needed.
 > 
 > Hopefully the application did run, now let's move to actually coding some stuff :)  
@@ -234,9 +238,9 @@ In the image below are the two files we will work with:
 * Main.axml which is a AXML (markup) file for the "view"
 * MainActivity.cs which is the "code-behind" for the "view" and it's written in c#
 
-![](images/AndroidProjectFiles.png)
+![](images/AndroidProjectFilesMac.png)
 
-* 3) Like we did with the Windows Phone app let's create the View for the Android app.
+* 3) Like we did with the iOS app let's create the View for the Android app.
 	* Go to the Main.axml file, you'll notice that you can both edit it Visually (Design) or just with code (Source), just like in the original Android editor.
 	* To make things quicker, choose "Source" and replace all the contents with the code below.
 
@@ -272,7 +276,7 @@ In the image below are the two files we will work with:
 		        android:id="@+id/imageViewMeme" />
 			</LinearLayout> 
 
-> Just like the Windows Phone version this code adds:  
+> Just like the iOS version this code adds:  
 > 
 > * A Spinner to display all the meme's available
 > * Two Textbox's where we add the top and bottom text for our meme.
@@ -321,7 +325,7 @@ In the image below are the two files we will work with:
 
 > Add any missing references. And "fix" the "await".
 
-> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
+> This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and Spinner and the transforms the returned byte array in an image to display.
 
 * 6) This should do it! Try and run it just like you did on step 2)
 
