@@ -61,7 +61,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "4wOkBMq0J3mshTsxRwUGu2H2tP9kp1UK1XGjsnSSX7cxmwWcZL");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
 		
 				//Actually calls the service and returns a json string
@@ -83,7 +83,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "4wOkBMq0J3mshTsxRwUGu2H2tP9kp1UK1XGjsnSSX7cxmwWcZL");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
 		
 				//Actually calls the service and returns a byte array for the image
 				return await client.GetByteArrayAsync("https://ronreiter-meme-generator.p.mashape.com/meme?bottom="+bottomText+"&meme="+meme+"&top="+topText);
@@ -93,8 +93,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 
 > This class contains two methods, on returns a list of string with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
 
-> You might notice there's and Mashape API Key on these methods.
-> This key will be disabled in May 4, 2015.  
+> You might notice there's a missing Mashape API Key on these methods.
 > Get your own key for free in [here](https://www.mashape.com/ronreiter/meme-generator).
 
 * 4) Add missing "usings/imports".

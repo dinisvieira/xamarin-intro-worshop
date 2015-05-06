@@ -15,7 +15,7 @@ namespace XamarinMemeGenerator
 			var client = new HttpClient();
 
 			//headers required to call the service (API key and Accept type)
-			client.DefaultRequestHeaders.Add("X-Mashape-Key", "4wOkBMq0J3mshTsxRwUGu2H2tP9kp1UK1XGjsnSSX7cxmwWcZL");
+			client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
 			client.DefaultRequestHeaders.Add("Accept", "text/plain");
 
 			//Actually calls the service and returns a json string

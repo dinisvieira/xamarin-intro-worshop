@@ -16,6 +16,8 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 ## Requirements ##
 
+* Get your Mashape API Key from [here](https://www.mashape.com/ronreiter/meme-generator).
+
 * Windows PC (Windows 8.1)
 
 	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/windows/ "Xamarin.Android") (if you are going to use Xamarin Studio you can also install it in this step, and skip step 3)
