@@ -23,7 +23,6 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/windows/ "Xamarin.Android") (if you are going to use Xamarin Studio you can also install it in this step, and skip step 3)
 
 	* 2 - [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion") or the [default Android Emulator with some speed "boost"](http://developer.xamarin.com/guides/android/getting_started/installation/accelerating_android_emulators/)
-		
 
 	* 3 - [Visual Studio Community 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs "Visual Studio Community 2015")
 

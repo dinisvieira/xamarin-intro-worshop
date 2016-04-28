@@ -4,12 +4,12 @@ It's also possible to create an iOS Application but that would require a Mac Bui
 
 ## Before starting
 
-* This guide applies to Visual Studio 2013, but you shouldn't have any trouble following it with Xamarin Studio. (you can refer to the [Xamarin guides](http://developer.xamarin.com/guides/cross-platform/getting_started/introducing_xamarin_studio/) anyway)
+* This guide applies to Visual Studio 2015, but you shouldn't have any trouble following it with Xamarin Studio or other version of Visual Studio. (you can refer to the [Xamarin guides](http://developer.xamarin.com/guides/cross-platform/getting_started/introducing_xamarin_studio/) anyway)
 * Make sure you have Xamarin installed (which will also install the Xamarin Visual Studio Plugin)
 
 ## Create Project
 
-Open Visual Studio 2013 Community.
+Open Visual Studio 2015 Community.
 
 * 1) File => New => Project
 
