@@ -25,9 +25,9 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 	* 2 - [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion") or the [default Android Emulator with some speed "boost"](http://developer.xamarin.com/guides/android/getting_started/installation/accelerating_android_emulators/)
 		
 
-	* 3 - [Visual Studio Community 2013](https://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "Visual Studio Community 2013") or [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
+	* 3 - [Visual Studio Community 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs "Visual Studio Community 2015")
 
-	* 4 - [Windows Phone 8.1 SDK](https://dev.windows.com/en-us/develop/downloads "Windows Phone 8.1 SDK")
+	* 4 - [Windows Mobile SDK] If you didn't download it during the Visual Studio installation download it here (https://dev.windows.com/en-us/develop/downloads "Windows Mobile 10 SDK")
 	
 * Mac
 
