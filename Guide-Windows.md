@@ -60,7 +60,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
 		
 				//Actually calls the service and returns a json string
@@ -82,7 +82,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
 		
 				//Actually calls the service and returns a byte array for the image
 				return await client.GetByteArrayAsync("https://ronreiter-meme-generator.p.mashape.com/meme?bottom="+bottomText+"&meme="+meme+"&top="+topText);
@@ -92,7 +92,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 
 > This class contains two methods, one returns a list of strings with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
 
-> You might notice there's a missing Mashape API Key on these methods.
+> You might notice there's a Mashape API Key on these methods, you can use it or....
 > Get your own key for free in [here](https://www.mashape.com/ronreiter/meme-generator).
 
 * 4) Add missing "usings/imports".
@@ -185,7 +185,7 @@ In the image below are the two files we will work with:
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
 * 6) We already did lot's of stuff, but we are still missing the code to get the available meme's and display them on the ComboBox.
-	* To do that replace all the existing inside the "OnNavigatedTo" method with the one below:
+	* To do that replace all the existing code inside the "OnNavigatedTo" method with the one below:
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
             ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
