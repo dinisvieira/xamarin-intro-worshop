@@ -11,7 +11,7 @@ Open Xamarin Studio.
 
 * 1) File => New => Solution
 
-* 2) Choose Cross-Platform => App => Single View App => Next
+* 2) Choose Multiplatform/Cross Platform => App => Single View App => Next
 ![](images/CreateProject-Mac.png)
 
 * 3) Give it a name => Choose "Use Portable Class Library" => Next => (in the next page just press Create)
