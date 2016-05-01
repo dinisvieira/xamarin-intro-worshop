@@ -206,7 +206,7 @@ In the image below are the two files we will work with:
 	* **With this**
 
 			//Calls the Shared Portable Class Library to get a list with all available meme's.
-			ObservableCollection<string> memes = await XamarinMemeGenerator.WantSomeMemesNowClass.ShowMeThoseMemes ();
+			ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes ();
 
 			//Set the list of memes we got to our PickerView (using the pickerViewModel we created)
 			MemePicker.Model = new MemesPickerViewModel (memes);
