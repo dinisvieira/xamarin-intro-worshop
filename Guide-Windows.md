@@ -115,7 +115,7 @@ So for example this Json.NET plugin will be used by both the Android and Windows
 
 * 1) Let's do some work on our Windows Phone app.
 	* Start by setting it as the Startup Platform (Right-click XamarinMemeGenerator.WinPhone and select "Set as startup project")
-* 2) Sanity check. The app should launch "as is", although it won't do anything besides display an blank page.
+* 2) Sanity check. The app should launch "as is", although it won't do anything besides display a blank page with a button on it.
 	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
 	![](images/ProjectDebugConfig.png)
 
@@ -127,29 +127,31 @@ In the image below are the two files we will work with:
 
 ![](images/WinPhoProjectFiles.png)
 
-* 3) Open the MainPage.xaml and between the <Grid> and </Grid> tags add the code below.
+* 3) Open the MainPage.xaml and replace the existing StackPanel code with the Grid defined in the code below.
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <ComboBox x:Name="MemesListView" 
-                      VerticalAlignment="Stretch" 
-                      HorizontalAlignment="Stretch" IsEnabled="False">
-            </ComboBox>
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBox x:Name="TopTextBox" PlaceholderText="Top Text"></TextBox>
-            <TextBox x:Name="BottomTextBox" PlaceholderText="Bottom Text"></TextBox>
-            <Button x:Name="GenerateMyMeme" Tapped="GenerateMyMemeBtn_OnTapped">Generate My Meme</Button>
-        </StackPanel>
-        <Image x:Name="Image" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Image>
+        <Grid>
+	        <Grid.ColumnDefinitions>
+	            <ColumnDefinition/>
+	            <ColumnDefinition/>
+	        </Grid.ColumnDefinitions>
+	        <Grid.RowDefinitions>
+	            <RowDefinition Height="Auto"/>
+	            <RowDefinition Height="Auto"/>
+	            <RowDefinition/>
+	        </Grid.RowDefinitions>
+	        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+	            <ComboBox x:Name="MemesListView" 
+	                      VerticalAlignment="Stretch" 
+	                      HorizontalAlignment="Stretch" IsEnabled="False">
+	            </ComboBox>
+	        </StackPanel>
+	        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+	            <TextBox x:Name="TopTextBox" PlaceholderText="Top Text"></TextBox>
+	            <TextBox x:Name="BottomTextBox" PlaceholderText="Bottom Text"></TextBox>
+	            <Button x:Name="GenerateMyMeme" Tapped="GenerateMyMemeBtn_OnTapped">Generate My Meme</Button>
+	        </StackPanel>
+	        <Image x:Name="Image" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Image>
+        </Grid>
 
 > This code adds:  
 > 
