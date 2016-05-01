@@ -1,0 +1,4 @@
+XamarinMemeGenerator.Droid.MainActivity, XamarinMemeGenerator.Droid;md55ff5c58de4806d3bd8c141260c474579.MainActivity
+XamarinMemeGenerator.Droid.MainActivity, XamarinMemeGenerator.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55ff5c58de4806d3bd8c141260c474579.MainActivity
+XamarinMemeGenerator.Droid.MainActivity;md55ff5c58de4806d3bd8c141260c474579.MainActivity
+xamarinmemegenerator.droid.MainActivity;md55ff5c58de4806d3bd8c141260c474579.MainActivity
