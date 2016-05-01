@@ -127,7 +127,7 @@ In the image below are the two files we will work with:
 
 ![](images/WinPhoProjectFiles.png)
 
-* 3) Open the MainPage.xaml and replace the existing StackPanel code with the Grid defined in the code below.
+* 3) Open the MainPage.xaml and replace the existing 3 lines of markup code with the StackPanel and Button code with the Grid defined in the code below.
 
         <Grid>
 	        <Grid.ColumnDefinitions>
@@ -185,7 +185,7 @@ In the image below are the two files we will work with:
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
 * 6) We already did lot's of stuff, but we are still missing the code to get the available meme's and display them on the ComboBox.
-	* To do that add the following code in MainPage.xaml.cs "OnNavigatedTo" method:
+	* To do that replace all the existing inside the "OnNavigatedTo" method with the one below:
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
             ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
