@@ -1,0 +1,2 @@
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator.WinPhone\XamarinMemeGenerator.WinPhone.csproj;neutral
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator.csproj;neutral

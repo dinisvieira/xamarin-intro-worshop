@@ -1,0 +1,14 @@
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\XamarinMemeGenerator.dll
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\XamarinMemeGenerator.pdb
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.csprojResolveAssemblyReference.cache
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.dll
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.pdb
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\Newtonsoft.Json.dll
+c:\users\dinis\documents\visual studio 2013\Projects\XamarinMemeGenerator\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\XamarinMemeGenerator.dll
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\XamarinMemeGenerator.pdb
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.dll
+C:\Users\Dinis\Source\Repos\XamarinWorkshop\xamarin-intro-worshop\Code\WindowsDev\XamarinMemeGenerator (with iOS)\XamarinMemeGenerator\XamarinMemeGenerator\obj\Debug\XamarinMemeGenerator.pdb
