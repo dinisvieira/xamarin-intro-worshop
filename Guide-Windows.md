@@ -4,28 +4,27 @@ It's also possible to create an iOS Application but that would require a Mac Bui
 
 ## Before starting
 
-* This guide applies to Visual Studio 2015, but you shouldn't have any trouble following it with other version of Visual Studio.
-* Make sure you have Xamarin installed.
+* Make sure you have Visual Studio 2015 and Xamarin installed.
 
 ## Create Project
 
-Open Visual Studio 2015 Community.
+Open Visual Studio 2015.
 
 * 1) File => New => Project
 
-* 2) Choose "Visual C#" => "Mobile Apps" => Blank App (Native Portable) => Give it a name and "Ok"
+* 2) Choose "Visual C#" => "Cross Platfom" => Blank App (Native Portable) => Give it a name and "Ok"
 ![](images/CreateProject.png)
 
 Visual Studio will generate a template for Android / iOS / Windows Phone using a Portable Class Library to share code.
 
-> Note: If a "File Modification Detected" window pops up just press "Reload All"
+> Note: If a "Xamarin Mac Agent" window pops up just press "Close"
 
 We don't want iOS on this Guide so let's remove the generated iOS Project
 
 * 3) Right-click the Xamarin project and select "Remove"
 ![](images/DeleteIOS.png)
 
-You Solution Explorer should look like this now:
+You Solution Explorer should look similar to this now:
 ![](images/SolutionExplorer.png)
 
 > + XamarinMemeGenerator is our Portable Class Library, meant to share code between platforms.
