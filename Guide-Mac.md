@@ -123,7 +123,7 @@ So for example this Json.NET plugin will be used by both the Android and iOS pla
 Hopefully the application did run, now let's move to actually coding some stuff :)  
 In the image below are the two files we will work with:
 
-* Main.storyboard.xaml which is a "View" (it's a bit more complicated then that actually :)
+* Main.storyboard.xaml which is a "View" (it's a bit more complicated than that actually :)
 * ViewController.cs which is the controller for the "view" and it's written in c#
 
 ![](images/iOSProjectFiles.png)
