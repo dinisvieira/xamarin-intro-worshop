@@ -282,7 +282,7 @@ In the image below are the two files we will work with:
             ImageView imageViewMeme = FindViewById<ImageView>(Resource.Id.imageViewMeme);
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
-            ObservableCollection<string> memes = await XamarinMemeGenerator.WantSomeMemesNowClass.ShowMeThoseMemes();
+            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
 
             //Set the list of memes to our Spinner and enable it
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, memes);
@@ -292,7 +292,7 @@ In the image below are the two files we will work with:
             {
                 //Calls the Shared Portable Class Library with the values of the Spinner and TextBox's in this View.
                 //The returned value is the image in a byte array format 
-                byte[] imageBytes = await XamarinMemeGenerator.WantSomeMemesNowClass.GenerateMyMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
+                byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
 
                 //Create Image
                 Bitmap bmp = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
