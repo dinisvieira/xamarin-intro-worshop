@@ -147,7 +147,7 @@ In the image below are the two files we will work with:
 
         	//Calls the Shared Portable Class Library with the values of the PickerView and TextFields’s in this View.
         	//The returned value is the image in a byte array format 
-			byte[] imageByteArr = await XamarinMemeGenerator.WantSomeMemesNowClass.GenerateMyMeme(memeString, TopTextField.Text, BottomTextField.Text);
+			byte[] imageByteArr = await WantSomeMemesNowClass.GenerateMyMeme(memeString, TopTextField.Text, BottomTextField.Text);
 			//Create image
 			var img = new UIImage(NSData.FromArray(imageByteArr));
 
