@@ -54,7 +54,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 		public static class WantSomeMemesNowClass
 		{
 			//Gets a list of all available memes on this API
-			public async static Task<ObservableCollection<string>>  ShowMeThoseMemes()
+			public static async Task<ObservableCollection<string>>  ShowMeThoseMemes()
 			{
 		
 				var client = new HttpClient();
@@ -72,7 +72,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 			}
 			
 			//Given a meme, top and bottom texts this will return an image
-			public async static Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
+			public static async Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
 			{
 		
 				//This Meme Generator Api has a problem with non-ascii chars, so we strip them just to avoid it crashing.
