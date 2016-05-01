@@ -4,8 +4,8 @@ It's also possible to create an iOS Application but that would require a Mac Bui
 
 ## Before starting
 
-* This guide applies to Visual Studio 2015, but you shouldn't have any trouble following it with other version of Visual Studio. (you can refer to the [Xamarin guides](http://developer.xamarin.com/guides/cross-platform/getting_started/introducing_xamarin_studio/) anyway)
-* Make sure you have Xamarin installed (which will also install the Xamarin Visual Studio Plugin)
+* This guide applies to Visual Studio 2015, but you shouldn't have any trouble following it with other version of Visual Studio.
+* Make sure you have Xamarin installed.
 
 ## Create Project
 
