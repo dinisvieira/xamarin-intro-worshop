@@ -14,7 +14,7 @@ Open Xamarin Studio.
 * 2) Choose Multiplatform/Cross Platform => App => Single View App => Next
 ![](images/CreateProject-Mac.png)
 
-* 3) Give it a name => Choose "Use Portable Class Library" => Next => (in the next page just press Create)
+* 3) Give it a name => Select Android and iOS as Target Platforms => Choose "Use Portable Class Library" => Next => (in the next page just press Create)
 ![](images/CreateProject2-Mac.png)
 
 Xamarin Studio will generate a template for Android / iOS using a Portable Class Library to share code.
@@ -25,8 +25,6 @@ You Solution Explorer should look like this now:
 > + XamarinMemeGenerator is our Portable Class Library, meant to share code between platforms.
 > + XamarinMemeGenerator.Droid is the project specific to the Android platform.
 > + XamarinMemeGenerator.iOS is the project specific to the iOS platform.
-
-> Testing is important, but for this Workshop purposes you can delete the "UITests" project.
 
 * 4) Login / Create Xamarin Account (this might not be necessary if you have already done it in the past.
 	* Xamarin Studio => Account => Login (Create Account if necessary)
@@ -46,18 +44,18 @@ This is the screenshot of the application we want to build (Android version).
 * 2) Create a new Class called "WantSomeMemesNowClass.cs" (or something else you want, I'm not good with names :)
 	* Right-click the XamarinMemeGenerator Project => Add => New file => Choose "Empty Class" from the list, give it a name and click "New"
 
-* 3) This is definteley cheating, but here goes the code for this class...
+* 3) This is definitely cheating, but here goes the code for this class...
 
 		public static class WantSomeMemesNowClass
 		{
 			//Gets a list of all available memes on this API
-			public async static Task<ObservableCollection<string>>  ShowMeThoseMemes()
+			public static async Task<ObservableCollection<string>>  ShowMeThoseMemes()
 			{
 		
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
 		
 				//Actually calls the service and returns a json string
@@ -69,7 +67,7 @@ This is the screenshot of the application we want to build (Android version).
 			}
 			
 			//Given a meme, top and bottom texts this will return an image
-			public async static Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
+			public static async Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
 			{
 		
 				//This Meme Generator Api has a problem with non-ascii chars, so we strip them just to avoid it crashing.
@@ -79,7 +77,7 @@ This is the screenshot of the application we want to build (Android version).
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "GET_YOUR_OWN_API_KEY");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
 		
 				//Actually calls the service and returns a byte array for the image
 				return await client.GetByteArrayAsync("https://ronreiter-meme-generator.p.mashape.com/meme?bottom="+bottomText+"&meme="+meme+"&top="+topText);
@@ -89,7 +87,7 @@ This is the screenshot of the application we want to build (Android version).
 
 > This class contains two methods, on returns a list of string with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
 
-> You might notice there's a missing Mashape API Key on these methods.
+> You might notice there's a Mashape API Key on these methods, you can use it or…
 > Get your own key for free in [here](https://www.mashape.com/ronreiter/meme-generator).
 
 * 4) Add missing "usings/imports".
