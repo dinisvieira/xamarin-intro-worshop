@@ -4,28 +4,27 @@ It's also possible to create an iOS Application but that would require a Mac Bui
 
 ## Before starting
 
-* This guide applies to Visual Studio 2015, but you shouldn't have any trouble following it with Xamarin Studio or other version of Visual Studio. (you can refer to the [Xamarin guides](http://developer.xamarin.com/guides/cross-platform/getting_started/introducing_xamarin_studio/) anyway)
-* Make sure you have Xamarin installed (which will also install the Xamarin Visual Studio Plugin)
+* Make sure you have Visual Studio 2015 and Xamarin installed.
 
 ## Create Project
 
-Open Visual Studio 2015 Community.
+Open Visual Studio 2015.
 
 * 1) File => New => Project
 
-* 2) Choose "Visual C#" => "Mobile Apps" => Blank App (Native Portable) => Give it a name and "Ok"
+* 2) Choose "Visual C#" => "Cross Platfom" => Blank App (Native Portable) => Give it a name and "Ok"
 ![](images/CreateProject.png)
 
 Visual Studio will generate a template for Android / iOS / Windows Phone using a Portable Class Library to share code.
 
-> Note: If a "File Modification Detected" window pops up just press "Reload All"
+> Note: If a "Xamarin Mac Agent" window pops up just press "Close"
 
 We don't want iOS on this Guide so let's remove the generated iOS Project
 
 * 3) Right-click the Xamarin project and select "Remove"
 ![](images/DeleteIOS.png)
 
-You Solution Explorer should look like this now:
+You Solution Explorer should look similar to this now:
 ![](images/SolutionExplorer.png)
 
 > + XamarinMemeGenerator is our Portable Class Library, meant to share code between platforms.
@@ -91,7 +90,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 			}
 		}
 
-> This class contains two methods, on returns a list of string with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
+> This class contains two methods, one returns a list of strings with the possible meme's we can use and the other allows us to send a chosen meme, top and bottom text to get an Image. 
 
 > You might notice there's a missing Mashape API Key on these methods.
 > Get your own key for free in [here](https://www.mashape.com/ronreiter/meme-generator).
@@ -104,8 +103,8 @@ This is the screenshot of the application we want to build (Windows Phone versio
 		using System.Threading.Tasks;
 * 5) You might notice "JsonConvert" is still "red", that's because we need to add a "plugin/Nuget" to this Shared project that handles Json.
 	* a) Right Click the XamarinMemeGenerator project => Manage Nuget Packages
-	* b) A window will pop up, write "json" in the top-right corner box.
-	* c) Install the Json.NET that shows on the list.  
+	* b) Choose "Browse" on the window that opens and write "json" in the Search box.
+	* c) Install the Newtonsoft.Json that shows on the list.  
 	![](images/AddJSONMain.png)
 
 * 6) You can now import the required dependecy for the JsonConvert
