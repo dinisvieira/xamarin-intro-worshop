@@ -41,33 +41,50 @@ This is the screenshot of the application we want to build (Android version).
 
 * 1) In the XamarinMemeGenerator Project delete the "MyClass.cs"
 	* Right-click the MyClass.cs file and select "Remove"
-* 2) Create a new Class called "WantSomeMemesNowClass.cs" (or something else you want, I'm not good with names :)
+* 2) Create a new Class called "Memes.cs" (or something else you want, I'm not good with names :)
 	* Right-click the XamarinMemeGenerator Project => Add => New file => Choose "Empty Class" from the list, give it a name and click "New"
 
 * 3) This is definitely cheating, but here goes the code for this class...
 
-		public static class WantSomeMemesNowClass
+		public static class Memes
 		{
+		
+			private string MASHAPE_API_KEY = "REPLACE_THIS_WITH_THE_MASHAPE_API_KEY";
+		
 			//Gets a list of all available memes on this API
-			public static async Task<ObservableCollection<string>>  ShowMeThoseMemes()
+			public static async Task<ObservableCollection<string>>  GetMemesList()
 			{
 		
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY");
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
 		
 				//Actually calls the service and returns a json string
 				string response = await client.GetStringAsync("https://ronreiter-meme-generator.p.mashape.com/images");
-		
-				//converts json string to na ObservableCollection of strings
-				return JsonConvert.DeserializeObject<ObservableCollection<string>>(response);
+
+				//converts json string into a ObservableCollection of strings
+				var tmpList = JsonConvert.DeserializeObject<ObservableCollection<string>>(response);
+
+				//Regex for cleaning some garbage from results
+				Regex regexFirstCharIsDigit = new Regex(@"\d");
+				ObservableCollection<string> memesList = new ObservableCollection<string>();
+
+				//This API has some garbage, so let's clean some of the bad items
+				foreach (string item in tmpList)
+				{ 
+					if (!string.IsNullOrWhiteSpace(item) && !regexFirstCharIsDigit.IsMatch(item)) //is item is not null or whitespace and doesn't have digits then add to list
+					{
+						memesList.Add(item);
+					}
+				}
+				return memesList;
 		
 			}
 			
 			//Given a meme, top and bottom texts this will return an image
-			public static async Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
+			public static async Task<byte[]> GenerateMeme(string meme, string topText, string bottomText)
 			{
 		
 				//This Meme Generator Api has a problem with non-ascii chars, so we strip them just to avoid it crashing.
@@ -77,7 +94,7 @@ This is the screenshot of the application we want to build (Android version).
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY);
 		
 				//Actually calls the service and returns a byte array for the image
 				return await client.GetByteArrayAsync("https://ronreiter-meme-generator.p.mashape.com/meme?bottom="+bottomText+"&meme="+meme+"&top="+topText);
@@ -147,7 +164,7 @@ In the image below are the two files we will work with:
 
         	//Calls the Shared Portable Class Library with the values of the PickerView and TextFields’s in this View.
         	//The returned value is the image in a byte array format 
-			byte[] imageByteArr = await WantSomeMemesNowClass.GenerateMyMeme(memeString, TopTextField.Text, BottomTextField.Text);
+			byte[] imageByteArr = await Memes.GenerateMeme(memeString, TopTextField.Text, BottomTextField.Text);
 			//Create image
 			var img = new UIImage(NSData.FromArray(imageByteArr));
 
@@ -206,7 +223,7 @@ In the image below are the two files we will work with:
 	* **With this**
 
 			//Calls the Shared Portable Class Library to get a list with all available meme's.
-			ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes ();
+			ObservableCollection<string> memes = await Memes.GetMemesList ();
 
 			//Set the list of memes we got to our PickerView (using the pickerViewModel we created)
 			MemePicker.Model = new MemesPickerViewModel (memes);
@@ -301,7 +318,7 @@ In the image below are the two files we will work with:
             ImageView imageViewMeme = FindViewById<ImageView>(Resource.Id.imageViewMeme);
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
-            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
+            ObservableCollection<string> memes = await Memes.GetMemesList();
 
             //Set the list of memes to our Spinner and enable it
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, memes);
@@ -311,7 +328,7 @@ In the image below are the two files we will work with:
             {
                 //Calls the Shared Portable Class Library with the values of the Spinner and TextBox's in this View.
                 //The returned value is the image in a byte array format 
-                byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
+                byte[] imageBytes = await Memes.GenerateMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
 
                 //Create Image
                 Bitmap bmp = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);

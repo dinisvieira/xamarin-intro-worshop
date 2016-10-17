@@ -46,33 +46,50 @@ This is the screenshot of the application we want to build (Windows Phone versio
 
 * 1) In the XamarinMemeGenerator Project delete the "MyClass.cs"
 	* Right-click the MyClass.cs file and select "Delete"
-* 2) Create a new Class called "WantSomeMemesNowClass.cs" (or something else you want, I'm not good with names :)
+* 2) Create a new Class called "Memes.cs"
 	* Right-click the XamarinMemeGenerator Project => Add => New item => Choose "Class" from the list, give it a name and click "Add"
 
 * 3) This is definitley cheating, but here goes the code for this class...
 
-		public static class WantSomeMemesNowClass
+		public static class Memes
 		{
+		
+			private string MASHAPE_API_KEY = "REPLACE_THIS_WITH_THE_MASHAPE_API_KEY";
+		
 			//Gets a list of all available memes on this API
-			public static async Task<ObservableCollection<string>>  ShowMeThoseMemes()
+			public static async Task<ObservableCollection<string>> GetMemesList()
 			{
 		
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY);
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
-		
+				
 				//Actually calls the service and returns a json string
 				string response = await client.GetStringAsync("https://ronreiter-meme-generator.p.mashape.com/images");
-		
-				//converts json string to na ObservableCollection of strings
-				return JsonConvert.DeserializeObject<ObservableCollection<string>>(response);
+
+				//converts json string into a ObservableCollection of strings
+				var tmpList = JsonConvert.DeserializeObject<ObservableCollection<string>>(response);
+
+				//Regex for cleaning some garbage from results
+				Regex regexFirstCharIsDigit = new Regex(@"\d");
+				ObservableCollection<string> memesList = new ObservableCollection<string>();
+
+				//This API has some garbage, so let's clean some of the bad items
+				foreach (string item in tmpList)
+				{ 
+					if (!string.IsNullOrWhiteSpace(item) && !regexFirstCharIsDigit.IsMatch(item)) //is item is not null or whitespace and doesn't have digits then add to list
+					{
+						memesList.Add(item);
+					}
+				}
+				return memesList;
 		
 			}
 			
 			//Given a meme, top and bottom texts this will return an image
-			public static async Task<byte[]> GenerateMyMeme(string meme, string topText, string bottomText)
+			public static async Task<byte[]> GenerateMeme(string meme, string topText, string bottomText)
 			{
 		
 				//This Meme Generator Api has a problem with non-ascii chars, so we strip them just to avoid it crashing.
@@ -82,7 +99,7 @@ This is the screenshot of the application we want to build (Windows Phone versio
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", "XBbhHT1nvvmshsTLVkHJuWlfdUepp17mN4HjsnIpb54NzH04fZ");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY);
 		
 				//Actually calls the service and returns a byte array for the image
 				return await client.GetByteArrayAsync("https://ronreiter-meme-generator.p.mashape.com/meme?bottom="+bottomText+"&meme="+meme+"&top="+topText);
@@ -148,7 +165,7 @@ In the image below are the two files we will work with:
 	        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
 	            <TextBox x:Name="TopTextBox" PlaceholderText="Top Text"></TextBox>
 	            <TextBox x:Name="BottomTextBox" PlaceholderText="Bottom Text"></TextBox>
-	            <Button x:Name="GenerateMyMeme" Tapped="GenerateMyMemeBtn_OnTapped">Generate My Meme</Button>
+	            <Button x:Name="GenerateMeme" Tapped="GenerateMemeBtn_OnTapped">Generate My Meme</Button>
 	        </StackPanel>
 	        <Image x:Name="Image" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Image>
         </Grid>
@@ -160,14 +177,14 @@ In the image below are the two files we will work with:
 > * A button to call the API and get our Meme
 > * An image placeholder for our meme image
 
-* 4) You might notice an error in "GenerateMyMemeBtn_OnTapped", right-click it and choose "Go to definition". (you will be "switched" to the code-behind (MainPage.xaml.cs)
-* 5) Inside the newly generated method for the Button event (GenerateMyMemeBtn_OnTapped) add the following.
+* 4) You might notice an error in "GenerateMemeBtn_OnTapped", right-click it and choose "Go to definition". (you will be "switched" to the code-behind (MainPage.xaml.cs)
+* 5) Inside the newly generated method for the Button event (GenerateMemeBtn_OnTapped) add the following.
 
         if (MemesListView.SelectedValue == null) { return; } //make sure we have a selected value
 
         //Calls the Shared Portable Class Library with the values of the ComboBox and TextBox's in this View.
         //The returned value is the image in a byte array format 
-        byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(MemesListView.SelectedValue.ToString(), TopTextBox.Text, BottomTextBox.Text);
+        byte[] imageBytes = await Memes.GenerateMeme(MemesListView.SelectedValue.ToString(), TopTextBox.Text, BottomTextBox.Text);
 
         //Create Image
         var bitmapImage = new BitmapImage();
@@ -180,7 +197,7 @@ In the image below are the two files we will work with:
         Image.Source = bitmapImage;
 
 > Add any missing references. You might get an error on the "await's". Do you know what that is? Ask me! (Anyway, if you add an "async" to the method signature it will stop complaining.   
-> << private **async** void GenerateMyMemeBtn_OnTapped(object sender, TappedRoutedEventArgs e) >>
+> << private **async** void GenerateMemeBtn_OnTapped(object sender, TappedRoutedEventArgs e) >>
 
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
@@ -188,7 +205,7 @@ In the image below are the two files we will work with:
 	* To do that replace all the existing code inside the "OnNavigatedTo" method with the one below:
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
-            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
+            ObservableCollection<string> memes = await Memes.GetMemesList();
 
             //Set the list of memes to our ComboBox and enable it
             MemesListView.ItemsSource = memes;
@@ -282,7 +299,7 @@ In the image below are the two files we will work with:
             ImageView imageViewMeme = FindViewById<ImageView>(Resource.Id.imageViewMeme);
 
             //Calls the Shared Portable Class Library to get a list with all available meme's.
-            ObservableCollection<string> memes = await WantSomeMemesNowClass.ShowMeThoseMemes();
+            ObservableCollection<string> memes = await Memes.GetMemesList();
 
             //Set the list of memes to our Spinner and enable it
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, memes);
@@ -292,7 +309,7 @@ In the image below are the two files we will work with:
             {
                 //Calls the Shared Portable Class Library with the values of the Spinner and TextBox's in this View.
                 //The returned value is the image in a byte array format 
-                byte[] imageBytes = await WantSomeMemesNowClass.GenerateMyMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
+                byte[] imageBytes = await Memes.GenerateMeme(memesSpinner.SelectedItem.ToString(), editTextTop.Text, editTextBottom.Text);
 
                 //Create Image
                 Bitmap bmp = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);

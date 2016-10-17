@@ -16,7 +16,7 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 ## Requirements ##
 
-* Get your Mashape API Key from [here](https://www.mashape.com/ronreiter/meme-generator).
+* Get your Mashape API Key from [here](https://www.mashape.com/ronreiter/meme-generator) (Will be used to access the API we'll use on this workshop).
 
 * Windows PC (Windows 8.1 / 10)
 
