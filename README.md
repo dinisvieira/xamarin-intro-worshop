@@ -18,7 +18,7 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 
 * Get your Mashape API Key from [here](https://www.mashape.com/ronreiter/meme-generator).
 
-* Windows PC (Windows 8.1)
+* Windows PC (Windows 8.1 / 10)
 
 	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/windows/ "Xamarin.Android") (and Visual Studio Community 2015)
 
@@ -30,16 +30,15 @@ The objective with this workshop is to serve as a quick introduction to the Xama
 	
 * Mac
 
-	* 1 - [Xamarin.Android](http://developer.xamarin.com/guides/android/getting_started/installation/mac/ "Xamarin.Android") (you can also install Xamarin iOS and Xamarin Studio in this step, so you can skip 3 and 4)
-
-	* 2 - [Xamarin Android Player](https://xamarin.com/android-player "Xamarin Android Player") or [Genymotion](https://www.genymotion.com/#%21/ "Genymotion")
+	* 1 - [Xamarin.Android Installation Guide](http://developer.xamarin.com/guides/android/getting_started/installation/mac/ "Xamarin.Android") (you can also install Xamarin iOS and Xamarin Studio in this step, so you can skip 4 and 5)
 		
-	* 3 - [Xamarin Studio](http://xamarin.com/download "Xamarin Studio")
+	* 2 - [XCode IDE](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode IDE")
+		
+	* 3 - [Genymotion Android Emulator](https://www.genymotion.com/#%21/ "Genymotion Android Emulator") (or other Android Emulator)
+		
+	* 4 - [Xamarin Studio IDE Download](http://xamarin.com/download "Xamarin Studio IDE")
 
-	* 4 - [Xamarin iOS](http://developer.xamarin.com/guides/ios/getting_started/installation/mac/)
-
-
-* [Optional] Sign up for a [Xamarin Student License](https://xamarin.com/student).
+	* 5 - [Xamarin iOS Installation Guide](http://developer.xamarin.com/guides/ios/getting_started/installation/mac/)
 
 
 ## Workshop Guide ##
