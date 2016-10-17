@@ -226,7 +226,8 @@ So for example this Json.NET plugin will be used by both the Android and Windows
             };
 
 > Add any missing references. You might get an error on the "await's". Do you know what that is? Ask me! (Anyway, if you add an "async" to the method signature it will stop complaining.
-> << protected override async void OnCreate (Bundle bundle) >>
+
+> << protected override *async* void OnCreate (Bundle bundle) >>
 
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
