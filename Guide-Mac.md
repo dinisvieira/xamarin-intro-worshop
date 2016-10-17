@@ -58,7 +58,7 @@ This is the screenshot of the application we want to build (Android version).
 				var client = new HttpClient();
 		
 				//headers required to call the service (API key and Accept type)
-				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY");
+				client.DefaultRequestHeaders.Add("X-Mashape-Key", MASHAPE_API_KEY);
 				client.DefaultRequestHeaders.Add("Accept", "text/plain");
 		
 				//Actually calls the service and returns a json string
@@ -243,10 +243,11 @@ In the image below are the two files we will work with:
 * 2) Sanity check. The app should launch "as is", although it won't do anything besides display a page with a hello button.
 	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
 	![](images/ProjectDebugConfigMacAndroid.png)
+	
 > NOTE: The emulator to lauch the app depends a lot on the Emulator application you are using. Ask for help if needed.
-> 
+
 > Hopefully the application did run, now let's move to actually coding some stuff :)  
-> 
+ 
 > In the image below are the two files we will work with:
 
 * Main.axml which is a AXML (markup) file for the "view"
