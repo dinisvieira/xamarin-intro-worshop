@@ -306,9 +306,7 @@ In the image below are the two files we will work with:
 			// and attach an event to it
 			Button button = FindViewById<Button> (Resource.Id.myButton);
 			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
+			button.Click += delegate { button.Text = string.Format ("{0} clicks!", count++); };
 **With this**:
 
             //Reference to all the View Elements
