@@ -132,6 +132,7 @@ So for example this Json.NET plugin will be used by both the Android and Windows
 * 2) Sanity check. The app should launch "as is", although it won't do anything besides display a page with a hello button.
 	* Make sure the configurations are set to Debug|Any CPU and Run in one of the Emulators (see image below)
 	![](images/ProjectDebugAndroid.png)
+	
 > NOTE: The emulator to lauch the app depends a lot on the Emulator application you are using. Ask for help if needed.
 > Hopefully the application did run, now let's move to actually coding some stuff :)  
 > In the image below are the two files we will work with:
