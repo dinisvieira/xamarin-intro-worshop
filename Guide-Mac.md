@@ -49,7 +49,7 @@ This is the screenshot of the application we want to build (Android version).
 		public static class Memes
 		{
 		
-			private string MASHAPE_API_KEY = "REPLACE_THIS_WITH_THE_MASHAPE_API_KEY";
+			private static string MASHAPE_API_KEY = "REPLACE_THIS_WITH_THE_MASHAPE_API_KEY";
 		
 			//Gets a list of all available memes on this API
 			public static async Task<ObservableCollection<string>>  GetMemesList()
