@@ -348,8 +348,9 @@ In the image below are the two files we will work with:
 
 ### What about now? (Suggestions for your free time)
 
-* 1) Get a Windows PC or use Parallels/VMWare to build the missing platform (Windows Phone)
-* 2) Add more functionality like sharing and saving the generated image
-* 3) Redo the whole application using [Xamarin.Forms](http://developer.xamarin.com/guides/cross-platform/xamarin-forms/) (Allows to also share UI code)
-* 4) Share even more code by using MVVM pattern. [why?](http://stackoverflow.com/a/18711842/201096)
-* 5) Use a proper API. The API used in this Workshop is not that good (it's simple though), but you could try using a more complete/professional API.
+* 1) Add more functionality like sharing and saving the generated image
+* 2) Build a proper UI (easier to use, with scrollviewer for smaller screens and/or more pages)
+* 3) Get a Windows PC or use Parallels/VMWare to build the missing platform (Windows Phone)
+* 4) Redo the whole application using [Xamarin.Forms](http://developer.xamarin.com/guides/cross-platform/xamarin-forms/) (Allows to also share UI code)
+* 5) Share even more code by using MVVM pattern. [why?](http://stackoverflow.com/a/18711842/201096) (you can even do it with a framework like MVVMLight or MVVMCross)
+* 6) Use a proper API. The API used in this Workshop is not that good (it's simple though), but you could try using a more complete/professional API.
