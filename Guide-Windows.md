@@ -142,7 +142,7 @@ So for example this Json.NET plugin will be used by both the Android and Windows
 
 ![](images/AndroidProjectFiles.png)
 
-* 3) Like we did with the Windows Phone app let's create the View for the Android app.
+* 3) Let's create the View for the Android app.
 	* Go to the Main.axml file, you'll notice that you can both edit it Visually (Design) or just with code (Source), just like in the original Android editor.
 	* To make things quicker, choose "Source" and replace all the contents with the code below.
 
@@ -178,7 +178,7 @@ So for example this Json.NET plugin will be used by both the Android and Windows
 		        android:id="@+id/imageViewMeme" />
 			</LinearLayout> 
 
-> Just like the Windows Phone version this code adds:  
+> This XML code adds:  
 > 
 > * A Spinner to display all the meme's available
 > * Two Textbox's where we add the top and bottom text for our meme.
@@ -225,7 +225,8 @@ So for example this Json.NET plugin will be used by both the Android and Windows
                 imageViewMeme.SetImageBitmap(bmp);
             };
 
-> Add any missing references. And "fix" the "await".
+> Add any missing references. You might get an error on the "await's". Do you know what that is? Ask me! (Anyway, if you add an "async" to the method signature it will stop complaining.
+> << protected override async void OnCreate (Bundle bundle) >>
 
 > This method is the one responsible to get the meme image. if you look close at it you'll notice it calls our Shared project with the values in the Textbox's and ComboBox and the transforms the returned byte array in an image to display.
 
